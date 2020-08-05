@@ -5,6 +5,12 @@ import datetime
 import schedule
 from pathlib import Path
 from random import choice
+
+
+class NotLoginError(Exception):
+    pass
+
+
 hands = [0, 1, 2]  # どのカードを引くか
 
 print('start')
@@ -26,11 +32,17 @@ def do_cardgame():
     driver.get("https://p.eagate.573.jp/game/bemani/wbr2020/01/card.html")
     sleep(0.5)
 
+    # 初回ログイン時処理
+    if driver.find_element_by_tag_name('body').text.startswith('e-amusementサイトにログインしていません'):
+        print('login and quit your blowser')
+        print('please restart this program')
+        raise NotLoginError
+
+    # カードバトル
     try:
         cards = [driver.find_element_by_id('card0'),
                  driver.find_element_by_id('card1'),
                  driver.find_element_by_id('card2')]
-        # cardを引く
         hand = choice(hands)  # 乱数で手を決める
         cards[hand].click()
         print('choiced', hand)
