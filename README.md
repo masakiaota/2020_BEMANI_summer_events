@@ -1,4 +1,4 @@
-An automation tool for [いちかのBEMANI超じゃんけん大会2020](https://p.eagate.573.jp/game/bemani/bjm2020/)
+An automation tool for 2020 BEMANI summer events
 ===
 
 こういうやつ
