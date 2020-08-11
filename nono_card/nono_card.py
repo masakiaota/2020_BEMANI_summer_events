@@ -55,6 +55,7 @@ def do_cardgame():
 
 
 schedule.every().day.at('15:01').do(do_cardgame)
+schedule.every().day.at('05:01').do(do_cardgame)
 
 # 初回でわざとコケる
 do_cardgame()
